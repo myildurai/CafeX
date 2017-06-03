@@ -13,6 +13,12 @@ object Menu {
   final val CHEESE_SANDWICH = "Cheese Sandwich"
   final val STEAK_SANDWICH = "Steak Sandwich"
 
-  val items:Map[String, Detail]=Map()
+  val items:Map[String, Detail]=Map(
+    COLA->new Detail(ItemType.Cold, 0.50),
+    COFFEE->Detail(ItemType.Hot, 1.00),
+    CHEESE_SANDWICH->Detail(ItemType.Cold,2.00),
+    STEAK_SANDWICH->Detail(ItemType.Hot,4.50)
+
+  )
 
 }
