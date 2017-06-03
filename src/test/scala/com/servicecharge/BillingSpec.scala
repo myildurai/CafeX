@@ -1,6 +1,8 @@
 package com.servicecharge
 
+import com.servicecharge.billing.BasicBilling
 import com.servicecharge.menu.{ItemType, Menu}
+import com.servicecharge.shopping.Shopping
 import org.scalatest.{FlatSpec, Matchers}
 
 /**
@@ -52,5 +54,14 @@ class BillingSpec extends FlatSpec with Matchers{
     Menu.items.get(Menu.STEAK_SANDWICH).get.cost should be (BigDecimal(4.50))
 
   }
+  "A shopping list " should " calculate the price without service charge correctly " in {
+    val shopping = new Shopping(BasicBilling)
 
+    val shoppingList1=List(Menu.COLA, Menu.COFFEE, Menu.CHEESE_SANDWICH)
+    shopping.calculateBill(shoppingList1) should be (BigDecimal(3.50))
+
+    val shoppingList2=List(Menu.COLA, Menu.COFFEE, Menu.CHEESE_SANDWICH, Menu.STEAK_SANDWICH)
+    shopping.calculateBill(shoppingList2) should be (BigDecimal(8.00))
+
+  }
 }
